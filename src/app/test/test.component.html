@@ -1,0 +1,95 @@
+<h2>Welcome {{name}}</h2>
+<h2>{{2+2}}</h2>
+<h2>{{"Welcome "+name}}</h2>
+<h2>{{name.length}}</h2>
+<h2>{{name.toUpperCase()}}</h2>
+<h2>{{greetUser()}}</h2>
+<!--Interpolation (using the variable present in ts file)-->
+<!--1.you cannot assing the expression into varibale 
+    2.cannot access the global variable-->
+
+    <input [id]="myId" type="text" value="Piyush">
+    <input [disabled]="isdisable" type="text" value="Piyush">
+    <!--this is property binding,as interpolation doesnt works in other types rather 
+        than string we use property binding enclosing the property in square brackets-->
+
+        <!--Class binding-->
+    <h2 class="text-success">Angular Learning</h2>
+    <h2 [class]="successClass">Angular Learning</h2>
+    <h2 class="text-special" [class]="successClass">Angular Learning</h2>
+    <!--conditionally applying class property -->
+    <h2 [class.text-danger]="hasError">Angular Learning</h2>
+    <h2 [ngClass]="messageClasses">Piyush</h2> -->
+
+    <!--Style binding-->
+    <h2 [style.color]="'orange'">Style Binding</h2>
+    <h2 [style.color]="hasError ?'red': 'blue'">Style Binding</h2>
+<!--same as class binding we can apply series of style to 
+    element by creating an object using [ngStyle]-->
+<!--
+    []-from class to template(property binding)
+    ()-from template to class(Event binding)
+-->
+    <!--Event Binding-->
+<button (click)="onclick($event)">Greet User</button>
+{{greeting}}
+
+<hr>
+
+<!--Template reference variable-->
+<input #myInput type="text">
+<button (click)="logmessage(myInput.value)">Log</button>
+
+<hr>
+<!--Two way binding used for synchronization-->
+ <input type="text" [(ngModel)]="Firstname">  
+<!-- [()]-bannana in a box -->
+{{Firstname}}
+
+
+
+<!--Structure directive -->
+<!--1.ngIf-->
+<h2 *ngIf="displayName;else elseBlock">ngIF testing</h2>
+<ng-template #elseBlock>
+    <h2 >Else part executed</h2>
+</ng-template>
+
+<!--ngSwitch directive-->
+<div [ngSwitch]="color"> 
+    <div *ngSwitchCase="'red'">You have picked Red</div>
+    <div *ngSwitchCase="'blue'">You have picked Blue</div>
+    <div *ngSwitchDefault>Pick again</div>
+</div>
+
+<!--*ngFor -->
+<div *ngFor="let c of colors; index as i ">
+   {{i}} {{c}}
+</div>
+
+
+<!--component Interaction using input and output directive-->
+<h2>{{"hello "+parentData}}</h2>
+<button (click)="fireevent()">Send the event</button>
+
+<!--Pipies-->
+<h2>{{name | lowercase }}</h2>
+<h2>{{name | uppercase }}</h2>
+<h2>{{name | slice:2}}</h2>
+
+<h2>{{5.678 | number:'1.2-3'  }}</h2>
+<h2>{{5.678 | number:'3.4-5' }}</h2>
+<h2>{{5.678 | number:'3.1-2'}}</h2>
+
+<h2>{{0.25 | percent}}</h2>
+<h2>{{0.25 | currency }}</h2><!--By default the currency is in dollars-->
+<h2>{{0.25 | currency:'GBP' }}</h2>
+
+<h2>{{date | date:'short'}}</h2>
+<h2>{{date | date:'shortDate'}}</h2>
+<h2>{{date | date:'shortTime'}}</h2>
+
+<!--Pipes  changes the data in the view only doesn't change the value of variable-->
+
+
+<!--Services implemented in emp_list and emp_details-->
